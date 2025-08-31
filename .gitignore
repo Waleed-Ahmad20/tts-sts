@@ -1,0 +1,74 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+.conda/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testing / coverage / type checking
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.pyre/
+.pytype/
+ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs & temp
+*.log
+logs/
+*.tmp
+tmp/
+.cache/
+.cache*/
+.cache_dir/
+
+# OS / Editors
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.code-workspace
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Docker/dev
+# (docker-compose override or local files if any)
+docker-compose.override.yml
+
+# ---- Project data & artifacts (created at runtime or mounted) ----
+# Keep directories but exclude their contents
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+model_cache/*
+!model_cache/.gitkeep
+
+# Model/weight blobs (avoid accidental commits)
+*.pth
+*.pt
+*.onnx
+*.ckpt

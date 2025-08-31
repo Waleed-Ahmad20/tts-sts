@@ -1,0 +1,30 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Core TTS and ML - Fixed compatibility versions
+transformers==4.44.2
+TTS==0.22.0
+# Use CPU-only torch build suitable for Streamlit Cloud
+torch==2.1.2+cpu
+torchaudio==2.1.2+cpu
+
+# PDF processing
+pypdf>=4.0.0
+pdf2image>=1.17.0
+pytesseract>=0.3.10
+Pillow>=9.5.0
+
+# Audio processing
+pydub>=0.25.1
+soundfile>=0.12.1
+
+# Utilities
+numpy>=1.24.0
+tqdm>=4.65.0
+streamlit>=1.36.0
+
+# Additional dependencies for XTTS compatibility
+tokenizers>=0.15.0
+librosa>=0.10.0
+inflect>=6.0.0
+phonemizer>=3.2.0
+gruut>=2.2.3

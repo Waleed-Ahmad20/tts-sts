@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  tts-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: development  # Use the development stage
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./model_cache:/root/.local/share/tts
+      # Mount app.py for live code changes during development
+      - ./app.py:/app/app.py:ro
+    environment:
+      - COQUI_TOS_AGREED=1
+    # Override entrypoint for interactive development
+    # entrypoint: ["python", "app.py"]
+    
+  tts-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: production  # Use the production stage
+    volumes:
+      - ./input:/app/input
+      - ./output:/app/output
+      - ./model_cache:/root/.local/share/tts
+    environment:
+      - COQUI_TOS_AGREED=1

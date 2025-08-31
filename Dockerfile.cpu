@@ -1,0 +1,39 @@
+FROM python:3.11-slim
+
+ENV COQUI_TOS_AGREED=1
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    TZ=UTC \
+    LANG=C.UTF-8
+
+# Install system dependencies in a single layer
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg tesseract-ocr poppler-utils \
+    build-essential git wget \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Install PyTorch CPU version first
+RUN pip install --upgrade pip && \
+    pip install torch==2.1.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cpu
+
+# Install transformers with compatible version before TTS
+RUN pip install transformers==4.44.2
+
+# Install other dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy application
+COPY app.py .
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+# Create input/output directories
+RUN mkdir -p input output
+
+ENTRYPOINT ["./entrypoint.sh"]

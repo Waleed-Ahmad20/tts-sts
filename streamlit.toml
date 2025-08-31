@@ -1,0 +1,12 @@
+[general]
+email = ""
+
+[build]
+python_version = "3.10"
+
+[server]
+port = 8501
+headless = true
+
+[client]
+toolbarMode = "minimal"

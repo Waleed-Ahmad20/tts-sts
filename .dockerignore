@@ -1,0 +1,26 @@
+# Ignore output and cache directories to speed up builds
+output/
+model_cache/
+*.log
+*.tmp
+.git/
+.gitignore
+README.md
+.vscode/
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.nyc_output
+node_modules/
+*.md
+!requirements.txt
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
