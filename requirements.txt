@@ -4,7 +4,7 @@
 transformers==4.44.2
 TTS==0.22.0
 # Use CPU-only torch build suitable for Streamlit Cloud
-torch==2.1.2+cpu
+torch==2.2.0+cpu
 torchaudio==2.1.2+cpu
 
 # PDF processing
